@@ -1,0 +1,676 @@
+/* ===== ADVANCED PROFESSIONAL STYLING ===== */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    --warning-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --dark-gradient: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #84fab0;
+    --warning-color: #f6d365;
+    --danger-color: #f5576c;
+    
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-light: #718096;
+    --text-white: #ffffff;
+    
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+    
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 30px;
+    --border-radius-circle: 50%;
+    
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+    color: var(--text-white);
+}
+
+/* Override Tailwind background for body */
+body.bg-gray-50,
+body.bg-gradient-to-br {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}
+
+/* Animated overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(102, 126, 234, 0.3) 0%,
+        rgba(118, 75, 162, 0.3) 50%,
+        rgba(102, 126, 234, 0.3) 100%
+    );
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.3; }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.max-w-7xl.mx-auto.mt-8.px-4 {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glass morphism for cards */
+.bg-white.rounded-xl.shadow-md,
+.bg-white.rounded-2xl.shadow-2xl {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: var(--shadow-xl) !important;
+    color: white !important;
+}
+
+/* Override text colors for glass cards */
+.bg-white.rounded-xl.shadow-md p,
+.bg-white.rounded-xl.shadow-md h2,
+.bg-white.rounded-xl.shadow-md label,
+.bg-white.rounded-2xl.shadow-2xl h1,
+.bg-white.rounded-2xl.shadow-2xl p,
+.bg-white.rounded-2xl.shadow-2xl label {
+    color: white !important;
+}
+
+.bg-white.rounded-xl.shadow-md .text-gray-600,
+.bg-white.rounded-xl.shadow-md .text-gray-700,
+.bg-white.rounded-xl.shadow-md .text-gray-800,
+.bg-white.rounded-2xl.shadow-2xl .text-gray-600,
+.bg-white.rounded-2xl.shadow-2xl .text-gray-700,
+.bg-white.rounded-2xl.shadow-2xl .text-gray-800 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ===== NAVIGATION ===== */
+nav.bg-white.shadow-lg {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: var(--shadow-lg) !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .text-gray-700,
+nav .text-gray-600 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+nav .text-gray-700:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+nav h1.text-xl.font-bold.text-blue-600 {
+    color: white !important;
+    background: linear-gradient(135deg, #fff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== DATE PICKER SECTION ===== */
+#datePicker {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: var(--border-radius-md) !important;
+    width: 100%;
+}
+
+#datePicker:focus {
+    outline: none !important;
+    border-color: white !important;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+}
+
+#datePicker::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+button.bg-blue-500 {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    transition: var(--transition-normal) !important;
+}
+
+button.bg-blue-500:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: white !important;
+    transform: translateY(-2px);
+}
+
+button.bg-red-500 {
+    background: rgba(240, 147, 251, 0.2) !important;
+    border: 1px solid rgba(240, 147, 251, 0.5) !important;
+    color: white !important;
+}
+
+button.bg-red-500:hover {
+    background: rgba(240, 147, 251, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+/* ===== STATS CARDS ===== */
+#adminStats .bg-white.rounded-xl.shadow-md {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+#adminStats .text-gray-600,
+#adminStats .text-2xl {
+    color: white !important;
+}
+
+#adminStats .p-3.bg-blue-100,
+#adminStats .p-3.bg-green-100,
+#adminStats .p-3.bg-yellow-100,
+#adminStats .p-3.bg-purple-100 {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+/* ===== TABLE STYLING ===== */
+.bg-white.rounded-xl.shadow-md.overflow-hidden {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    overflow: hidden !important;
+}
+
+thead.bg-gray-50 {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+
+thead.bg-gray-50 th {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 16px 24px;
+}
+
+tbody.bg-white.divide-y.divide-gray-200 {
+    background: transparent !important;
+}
+
+tbody.bg-white.divide-y.divide-gray-200 tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+tbody.bg-white.divide-y.divide-gray-200 td {
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 16px 24px;
+}
+
+tbody.bg-white.divide-y.divide-gray-200 tr:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Add to your style.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: none;
+    vertical-align: middle;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Fix table row hover effect - remove white background */
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    transition: var(--transition-normal);
+}
+
+/* Override any Tailwind hover classes */
+.hover\:bg-gray-50:hover,
+.hover\:bg-gray-100:hover,
+.hover\:bg-white:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* Fix button hover effects */
+.bg-green-500:hover,
+.bg-yellow-500:hover,
+.bg-blue-500:hover,
+.bg-red-500:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Ensure table cells have proper background */
+td, th {
+    background: transparent !important;
+}
+
+/* Fix the table container background */
+.bg-white.rounded-xl.shadow-md.overflow-hidden {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Fix status badges on hover */
+td span.bg-green-100,
+td span.bg-yellow-100,
+td span.bg-gray-100 {
+    transition: var(--transition-normal);
+}
+
+td span.bg-green-100:hover {
+    background: rgba(132, 250, 176, 0.3) !important;
+    transform: scale(1.05);
+}
+
+td span.bg-yellow-100:hover {
+    background: rgba(246, 211, 101, 0.3) !important;
+    transform: scale(1.05);
+}
+
+td span.bg-gray-100:hover {
+    background: rgba(240, 147, 251, 0.3) !important;
+    transform: scale(1.05);
+}
+
+/* Ensure the table rows have consistent styling */
+tbody tr {
+    transition: var(--transition-normal);
+    cursor: pointer;
+}
+
+/* Fix the "Not Available" text */
+.text-gray-500.text-sm {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-style: italic;
+}
+
+/* Improve the overall table readability */
+td {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 400;
+}
+
+th {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Add a subtle animation to table rows */
+@keyframes rowPulse {
+    0% {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    100% {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+tbody tr:active {
+    animation: rowPulse 0.3s ease;
+}
+
+/* Ensure each column has consistent width */
+th:first-child, td:first-child { width: 15%; }
+th:nth-child(2), td:nth-child(2) { width: 20%; }
+th:nth-child(3), td:nth-child(3) { width: 12%; }
+th:nth-child(4), td:nth-child(4) { width: 15%; }
+th:last-child, td:last-child { width: 38%; }
+
+/* ===== STATUS BADGES ===== */
+.bg-green-100.text-green-800,
+.bg-yellow-100.text-yellow-800,
+.bg-gray-100.text-gray-800 {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px) !important;
+    border: 1px solid currentColor !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+.bg-green-100.text-green-800 {
+    color: #84fab0 !important;
+    border-color: #84fab0 !important;
+}
+
+.bg-yellow-100.text-yellow-800 {
+    color: #f6d365 !important;
+    border-color: #f6d365 !important;
+}
+
+.bg-gray-100.text-gray-800 {
+    color: #f093fb !important;
+    border-color: #f093fb !important;
+}
+
+/* ===== BUTTON STYLES ===== */
+.bg-green-500,
+.bg-yellow-500,
+.bg-red-500,
+.bg-blue-500 {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: var(--border-radius-md) !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    transition: var(--transition-normal) !important;
+    cursor: pointer !important;
+    margin: 0 4px !important;
+}
+
+.bg-green-500:hover,
+.bg-yellow-500:hover,
+.bg-red-500:hover,
+.bg-blue-500:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: white !important;
+}
+
+.bg-green-500 {
+    border-color: #84fab0 !important;
+}
+.bg-yellow-500 {
+    border-color: #f6d365 !important;
+}
+.bg-red-500 {
+    border-color: #f093fb !important;
+}
+.bg-blue-500 {
+    border-color: #667eea !important;
+}
+
+/* ===== LOGIN/REGISTER PAGES ===== */
+.bg-gradient-to-br.from-blue-500.to-purple-600 {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.bg-white.rounded-2xl.shadow-2xl input {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    padding: 12px 16px !important;
+    border-radius: var(--border-radius-md) !important;
+    width: 100%;
+}
+
+.bg-white.rounded-2xl.shadow-2xl input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.bg-white.rounded-2xl.shadow-2xl input:focus {
+    outline: none !important;
+    border-color: white !important;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+}
+
+.bg-gradient-to-r.from-blue-500.to-purple-600 {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(5px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 12px !important;
+    border-radius: var(--border-radius-md) !important;
+    width: 100%;
+    cursor: pointer;
+    transition: var(--transition-normal) !important;
+}
+
+.bg-gradient-to-r.from-blue-500.to-purple-600:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: white !important;
+    transform: translateY(-2px);
+}
+
+/* ===== MODAL STYLING ===== */
+#slotModal {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+#slotModal .bg-white {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--border-radius-xl) !important;
+    padding: 30px !important;
+    max-width: 500px !important;
+    width: 90% !important;
+}
+
+#slotModal h3,
+#slotModal label {
+    color: white !important;
+}
+
+#slotModal input,
+#slotModal select {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    padding: 10px !important;
+    border-radius: var(--border-radius-md) !important;
+    width: 100%;
+    margin-top: 4px;
+}
+
+#slotModal input:focus,
+#slotModal select:focus {
+    outline: none !important;
+    border-color: white !important;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+}
+
+#slotModal select option {
+    background: #2d3748;
+    color: white;
+}
+
+.bg-gray-300 {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+.bg-gray-300:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ===== FLOATING PARTICLES ===== */
+.particle {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat 20s infinite linear;
+    z-index: 0;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+}
+
+.particle:nth-child(1) { width: 10px; height: 10px; left: 10%; animation-duration: 15s; }
+.particle:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-duration: 20s; }
+.particle:nth-child(3) { width: 8px; height: 8px; left: 30%; animation-duration: 18s; }
+.particle:nth-child(4) { width: 20px; height: 20px; left: 40%; animation-duration: 25s; }
+.particle:nth-child(5) { width: 12px; height: 12px; left: 50%; animation-duration: 22s; }
+.particle:nth-child(6) { width: 18px; height: 18px; left: 60%; animation-duration: 17s; }
+.particle:nth-child(7) { width: 7px; height: 7px; left: 70%; animation-duration: 19s; }
+.particle:nth-child(8) { width: 25px; height: 25px; left: 80%; animation-duration: 30s; }
+.particle:nth-child(9) { width: 9px; height: 9px; left: 90%; animation-duration: 21s; }
+.particle:nth-child(10) { width: 14px; height: 14px; left: 95%; animation-duration: 24s; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .flex.flex-col.md\:flex-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    th, td {
+        padding: 12px 8px !important;
+    }
+    
+    button {
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .max-w-7xl.mx-auto.mt-8.px-4 {
+        padding: 0 10px;
+    }
+    
+    h1.text-xl.font-bold {
+        font-size: 1.2rem !important;
+    }
+    
+    .flex.items-center.space-x-8 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
