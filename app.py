@@ -3,10 +3,15 @@ import mysql.connector
 from datetime import datetime, timedelta
 import bcrypt
 from functools import wraps
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here-change-this-in-production'  # Change this in production
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+    
 # Database connection
 db = mysql.connector.connect(
     host="localhost",
