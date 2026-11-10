@@ -5,19 +5,22 @@ import bcrypt
 from functools import wraps
 import os
 
-app = Flask(__name__)
-app.secret_key = 'your-secret-key-here-change-this-in-production'  # Change this in production
+from dotenv import load_dotenv
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+# Secrets come from a .env file that is never committed. Copy .env.example to .env.
+load_dotenv()
+
+app = Flask(__name__)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY")
+if not app.secret_key:
+    raise RuntimeError("Set FLASK_SECRET_KEY in your .env file (see .env.example).")
     
 # Database connection
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="uppi_008",
-    database="slotbooking",
+    host=os.environ.get("DB_HOST", "localhost"),
+    user=os.environ.get("DB_USER", "root"),
+    password=os.environ.get("DB_PASSWORD", ""),
+    database=os.environ.get("DB_NAME", "slotbooking"),
     autocommit=True
 )
 
@@ -56,7 +59,8 @@ def register_page():
 @app.route("/admin")
 @admin_required
 def admin_page():
-    return render_template("admin.html")
+    # The admin panel is part of the home page and opens for admin users.
+    return redirect(url_for('home'))
 
 @app.route("/api/check-auth")
 def check_auth():
@@ -298,4 +302,7 @@ def get_admin_stats():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        port=int(os.environ.get("PORT", 5000)),
+        debug=os.environ.get("FLASK_DEBUG") == "1",
+    )
